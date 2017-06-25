@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+
+export default class App extends Component {
+
+  render() {
+    return (
+      <MuiThemeProvider>
+        <RaisedButton
+          label="Oh Yeah we did it"
+          onTouchTap={() => {
+            console.log('it works')
+          }}
+        />
+      </MuiThemeProvider>
+    );
+  }
+}
+
