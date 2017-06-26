@@ -21,7 +21,7 @@ class App extends Component {
   renderPics() {
     console.log("api " + this.props.pics);
 
-    return this.getPics().map((pic) => (
+    return this.props.pics.map((pic) => (
       <Pic key={pic._id} pic={pic}/>
     ));
   }
