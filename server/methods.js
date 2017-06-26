@@ -11,11 +11,18 @@ Meteor.methods({
       const access_token = '3959116306.6ae6b94.93ae2da0898848099338d9cde7ac0ad2';
       const result = HTTP.call('GET', 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + access_token,
         {});
-      console.log(result.data.data[0].images.standard_resolution.url);
+      //console.log(result.data.data[0].images.standard_resolution.url);
+      // Pics.insert({
+      //   imageURL: result.data.data[0].images.standard_resolution.url
+      // });
 
-      Pics.insert({
-        imageURL: result.data.data[0].images.standard_resolution.url
+      result.data.data.map(function (element) {
+        //console.log( element.images.standard_resolution.url);
+        Pics.insert({
+          imageURL: element.images.standard_resolution.url
+        });
       });
+
 
       return true;
     } catch (e) {
