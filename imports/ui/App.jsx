@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+
 
 import Pic from './Pic';
 
@@ -11,11 +13,19 @@ import { Pics } from '../api/pics';
 class App extends Component {
 
   getPics() {
-    return [
-      { _id: 1, imageURL: 'This is task 1' },
-      { _id: 2, imageURL: 'This is task 2' },
-      { _id: 3, imageURL: 'This is task 3' },
-    ];
+    console.log("getpics");
+    Meteor.call('getInstagram', (error) => {
+      if (error) {
+        console.log("error " + error.reason);
+      } else {
+        console.log("Instagram api ok");
+      }
+    });
+    // return [
+    //   { _id: 1, imageURL: 'This is task 1' },
+    //   { _id: 2, imageURL: 'This is task 2' },
+    //   { _id: 3, imageURL: 'This is task 3' },
+    // ];
   }
 
   renderPics() {
@@ -32,9 +42,7 @@ class App extends Component {
         <MuiThemeProvider>
           <RaisedButton
             label="Oh Yeah we did it"
-            onTouchTap={() => {
-              console.log('it works')
-            }}
+            onTouchTap={this.getPics}
           />
         </MuiThemeProvider>
 
