@@ -10,6 +10,22 @@ import { Pics } from '../api/pics';
 
 class App extends Component {
 
+  getPics() {
+    return [
+      { _id: 1, imageURL: 'This is task 1' },
+      { _id: 2, imageURL: 'This is task 2' },
+      { _id: 3, imageURL: 'This is task 3' },
+    ];
+  }
+
+  renderPics() {
+    console.log("api " + this.props.pics);
+
+    return this.getPics().map((pic) => (
+      <Pic key={pic._id} pic={pic}/>
+    ));
+  }
+
   render() {
     return (
       <div>
@@ -24,7 +40,8 @@ class App extends Component {
 
         <ul>
         {/*Display pics from instagram*/}
-        <Pic/>
+          {this.renderPics()}
+
         </ul>
 
       </div>
