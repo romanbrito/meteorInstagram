@@ -8,6 +8,7 @@ export const Pics = new Mongo.Collection('pics');
 
 const PicSchema = new SimpleSchema({
   imageURL: {type: String},
+  picID: { type: String},
 });
 
 //db.pics.insert({ imageURL: "Hello world!"});
